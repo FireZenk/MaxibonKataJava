@@ -28,7 +28,7 @@ public class KarumiHqProperties {
         karumiHQs = new KarumiHQs(chat);
     }
 
-    @Property public void theNumberOfMaxibonsAfterOpenTheFridgeIsAlwaysTwoOrHigher(
+    @Property(trials = 1000) public void theNumberOfMaxibonsAfterOpenTheFridgeIsAlwaysTwoOrHigher(
             @From(KarumiesGenerator.class) Developer developer) {
         Stream.of(developer, developer, developer)
                 .forEach(developer1 -> {
