@@ -32,6 +32,17 @@ public class DeveloperProperties {
         assertTrue(developer.getNumberOfMaxibonsToGrab() >= 0);
     }
 
+    @Property public void theNumberOfMaxibonsAfterOpenTheFridgeIsAlwaysTwoOrHigher(
+            @From(KarumiesGenerator.class) Developer developer) {
+        KarumiHQs karumiHQs = new KarumiHQs();
+
+        karumiHQs.openFridge(developer);
+        karumiHQs.openFridge(developer);
+        karumiHQs.openFridge(developer);
+
+        assertTrue(karumiHQs.getMaxibonsLeft() > 2);
+    }
+
     @Test public void theNumberOfMaxibonsPerKarumiDeveloperIsOk() {
         List<Developer> karumies = new ArrayList<>();
         Collections.addAll(karumies, Karumies.PEDRO, Karumies.ALBERTO, Karumies.DAVIDE,
