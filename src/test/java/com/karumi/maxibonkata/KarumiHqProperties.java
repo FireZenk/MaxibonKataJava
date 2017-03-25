@@ -48,9 +48,9 @@ public class KarumiHqProperties {
     @Property public void theNumberOfMaxibonsAfterAGroupOfDevsOpenTheFridgeIsGreaterThanTwo(
             List<@From(KarumiesGenerator.class) Developer> developers) {
 
-        /*Stream.of(developers.toArray()).forEach(developer ->
+        developers.forEach(developer ->
                 System.out.println(developer.getName() + " opens the fridge")
-        );*/
+        );
 
         karumiHQs.openFridge(developers);
         System.out.println("Maxibons left: " + karumiHQs.getMaxibonsLeft() + "\n");
