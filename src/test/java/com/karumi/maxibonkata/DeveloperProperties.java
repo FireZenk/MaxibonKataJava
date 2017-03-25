@@ -29,16 +29,6 @@ public class DeveloperProperties {
         assertTrue(developer.getNumberOfMaxibonsToGrab() >= 0);
     }
 
-    @Property public void theNumberOfMaxibonsAfterOpenTheFridgeIsAlwaysTwoOrHigher(
-            @From(KarumiesGenerator.class) Developer developer) {
-        KarumiHQs karumiHQs = new KarumiHQs();
-
-        Stream.of(developer, developer, developer)
-                .forEach(karumiHQs::openFridge);
-
-        assertTrue(karumiHQs.getMaxibonsLeft() > 2);
-    }
-
     @Test public void theNumberOfMaxibonsPerKarumiDeveloperIsOk() {
         Stream.of(Karumies.PEDRO, Karumies.ALBERTO, Karumies.DAVIDE,
                 Karumies.SERGIO, Karumies.JORGE).forEach(System.out::println);
