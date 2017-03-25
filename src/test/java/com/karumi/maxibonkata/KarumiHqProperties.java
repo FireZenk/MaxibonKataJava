@@ -29,9 +29,13 @@ public class KarumiHqProperties {
     }
 
     @Property public void theNumberOfMaxibonsAfterOpenTheFridgeIsAlwaysTwoOrHigher(
-            @From(DevelopersGenerator.class) Developer developer) {
+            @From(KarumiesGenerator.class) Developer developer) {
         Stream.of(developer, developer, developer)
-                .forEach(karumiHQs::openFridge);
+                .forEach(developer1 -> {
+                    System.out.println(developer.getName() + " opens the fridge");
+                    karumiHQs.openFridge(developer);
+                    System.out.println("Maxibons left: " + karumiHQs.getMaxibonsLeft() + "\n");
+                });
 
         assertTrue(karumiHQs.getMaxibonsLeft() > 2);
     }
