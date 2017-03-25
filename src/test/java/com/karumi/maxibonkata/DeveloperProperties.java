@@ -7,9 +7,6 @@ import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
@@ -36,18 +33,16 @@ public class DeveloperProperties {
             @From(KarumiesGenerator.class) Developer developer) {
         KarumiHQs karumiHQs = new KarumiHQs();
 
-        karumiHQs.openFridge(developer);
-        karumiHQs.openFridge(developer);
-        karumiHQs.openFridge(developer);
+        Stream.of(developer, developer, developer)
+                .forEach(karumiHQs::openFridge);
 
         assertTrue(karumiHQs.getMaxibonsLeft() > 2);
     }
 
     @Test public void theNumberOfMaxibonsPerKarumiDeveloperIsOk() {
-        List<Developer> karumies = new ArrayList<>();
-        Collections.addAll(karumies, Karumies.PEDRO, Karumies.ALBERTO, Karumies.DAVIDE,
-                Karumies.SERGIO, Karumies.JORGE);
-        Stream.of(karumies).forEach(System.out::println);
+        Stream.of(Karumies.PEDRO, Karumies.ALBERTO, Karumies.DAVIDE,
+                Karumies.SERGIO, Karumies.JORGE).forEach(System.out::println);
+
         assertEquals(3, Karumies.PEDRO.getNumberOfMaxibonsToGrab());
         assertEquals(1, Karumies.ALBERTO.getNumberOfMaxibonsToGrab());
         assertEquals(0, Karumies.DAVIDE.getNumberOfMaxibonsToGrab());
